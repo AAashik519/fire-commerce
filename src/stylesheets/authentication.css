@@ -1,0 +1,39 @@
+ .register-parent{
+   height: 100vh;
+   background-color: aliceblue
+    
+ }
+ .register-parent .row{
+     height: 100vh;
+     align-items: center;
+ }
+.form-control{
+   box-shadow: none;
+   margin-top: 15px!important;
+  
+}
+ 
+ .form-control:focus{
+     box-shadow: none!important;
+     margin-top: 20px!important;
+ }
+ .register-form{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 3px;
+   
+ }
+ .register-top{
+     height: 50%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      background-color: #003F5C;
+      z-index: 0;
+      
+ }
+ .r-form{
+     z-index: 1;
+ }

@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import './stylesheets/layout.css'
 import './stylesheets/products.css'
+import './stylesheets/authentication.css'
 
 function App() {
   return (
