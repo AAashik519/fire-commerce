@@ -10,14 +10,17 @@ const LoginPage = () => {
     const [email ,setEmail] = useState()
     const [ password ,setPasword] = useState()
     const auth = getAuth();
-    const login=()=>{
+    const login= async()=>{
    
         try {
             setLoading(true)
 
-           const result= signInWithEmailAndPassword(auth, email, password)
-           toast.success("Login Successfull")
+           const result= await signInWithEmailAndPassword(auth, email, password)
+            localStorage.setItem("currentUser" ,JSON.stringify(result))
+            console.log(result);
            setLoading( false)
+           toast.success("Login Successfull")
+           window.location.href='/'
         } catch (error) {
             console.log();
             setLoading(false)

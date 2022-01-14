@@ -11,7 +11,8 @@ import {
   BrowserRouter ,
   Routes,
   Route,
-  Link
+  Link,
+  Navigate
 } from "react-router-dom";
 import './stylesheets/layout.css'
 import './stylesheets/products.css'
@@ -24,9 +25,9 @@ function App() {
       <ToastContainer />
       <BrowserRouter >
         <Routes>
-          <Route path ='/' exact element ={ <HomePage />} />
-          <Route path ='/cart' element ={ <CartPages/>} />
-          <Route path ='/productinfo/:productId' element ={ <ProductPage/>} />
+          <Route path ='/' exact element ={ <ProtectedRoutes ><HomePage /> </ProtectedRoutes>} />
+          <Route path ='/cart' element ={ <ProtectedRoutes >< CartPages /> </ProtectedRoutes>} />
+          <Route path ='/productinfo/:productId' element ={ <ProtectedRoutes >< ProductPage /> </ProtectedRoutes>} />
           <Route path ='/login' element ={ <LoginPage />} />
           <Route path ='/register' element ={ <RegisterPage/>} />
            
@@ -39,3 +40,12 @@ function App() {
 }
 
 export default App;
+
+
+export const  ProtectedRoutes= ({children})=>{
+if(localStorage.getItem('currentUser')){
+  return children
+}else{
+   return <Navigate to='/login' />
+}
+}

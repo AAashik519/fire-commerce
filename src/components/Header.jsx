@@ -4,6 +4,11 @@ import {FaBars, FaCartPlus} from 'react-icons/fa'
 import { useSelector } from "react-redux";
 const Header = () => {
   const {cartItems} =useSelector(state=>state.cartReducer)
+  const {user} = JSON.parse(localStorage.getItem('currentUser'))
+  const logout=()=>{
+    localStorage.removeItem('currentUser')
+    window.location.reload()
+  }
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg navbar-light nav-bg  ">
@@ -26,7 +31,7 @@ const Header = () => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page"  to=''>
-                   User
+                   {user.email.substring(0,user.email.length -10)}
                 </Link>
               </li>
               <li className="nav-item">
@@ -35,7 +40,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link"  to="logout">
+                <Link className="nav-link"  to="logout" onClick={logout}>
                    Logout
                 </Link>
               </li>
