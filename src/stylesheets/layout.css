@@ -44,3 +44,6 @@ button {
 button:hover{
     background-color: tomato;
 }
+a{
+    text-decoration: none;
+}

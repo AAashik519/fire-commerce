@@ -1,14 +1,34 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
+ 
 const LoginPage = () => {
+    const [loading, setLoading]=useState(false)
     const [email ,setEmail] = useState()
     const [ password ,setPasword] = useState()
-    
- 
+    const auth = getAuth();
+    const login=()=>{
+   
+        try {
+            setLoading(true)
+
+           const result= signInWithEmailAndPassword(auth, email, password)
+           toast.success("Login Successfull")
+           setLoading( false)
+        } catch (error) {
+            console.log();
+            setLoading(false)
+            toast.error("Login Failed")
+        }
+    }
     return (
+       
         <div>
         <div className='register-parent '>
+        {loading && (<Loader />)}
             <div className="register-top">
 
             </div>
@@ -30,7 +50,7 @@ const LoginPage = () => {
  
                       
 
-                        <button className='btn btn-primary mt-3'>  LOGIN</button>
+                        <button className='btn btn-primary mt-3' onClick={login}>  LOGIN</button>
                         <hr />
                         <Link to='/register'>Cick here to register</Link>
                     </div>

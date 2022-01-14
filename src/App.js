@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage';
 import CartPages from './pages/CartPages';
 import ProductPage from './pages/ProductPage';
@@ -15,10 +16,12 @@ import {
 import './stylesheets/layout.css'
 import './stylesheets/products.css'
 import './stylesheets/authentication.css'
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     < >
+      <ToastContainer />
       <BrowserRouter >
         <Routes>
           <Route path ='/' exact element ={ <HomePage />} />
