@@ -47,3 +47,6 @@ button:hover{
 a{
     text-decoration: none;
 }
+input , select{
+    height: 30px!important;
+}

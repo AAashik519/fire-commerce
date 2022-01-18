@@ -15,6 +15,8 @@ const [loading ,setLoading] = useState(false)
    const {cartItems} = useSelector(state=>state.cartReducer)
   const [products, setProducts] = useState([]);
   const  navigate =  useNavigate()
+  const [searchKey, setSearchKey]= useState('')
+  const [filterType, setfilterType] = useState('')
 
   useEffect(() => {
     getData();
@@ -54,8 +56,20 @@ const [loading ,setLoading] = useState(false)
   return (
     <Layout loading={loading}>
       <div className="container">
+        <div className="d-flex w-50 align-items-center p-4 justify-content-space-between m-" >
+          <input type="text" value={searchKey} onChange={e=>{setSearchKey(e.target.value)}} className="form-control m-2"  placeholder="serach item"/>
+          <select  className="form-control m-2" value={filterType} onChange={e=>setfilterType(e.target.value)}>
+            <option value=''>All</option>
+            <option value='electronic'>Electronic</option>
+            <option value='mobiles'>Mobiles</option>
+            <option value='fashion'>Fashion</option>
+          </select>
+        </div>
         <div className="row">
-          {products.map((product) => (
+          {products
+          .filter(obj=>obj.name.toLowerCase().includes(searchKey))
+          .filter(obj=>obj.category.toLowerCase().includes(filterType))
+          .map((product) => (
             
             <div className="col-md-4">
               <div className="m-2 p-2 product position-relative">
